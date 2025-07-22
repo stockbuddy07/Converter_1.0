@@ -31,7 +31,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="font-semibold mb-2 invisible md:visible">‎</h3> {/* Spacer for symmetry */}
+          <h3 className="font-semibold mb-2 invisible md:visible">‎</h3>
           <ul className="text-sm text-gray-400 space-y-1">
             <li>JPG to PDF</li>
             <li>Upscale Image</li>
@@ -49,7 +49,7 @@ export default function Footer() {
           <span><strong>CONVERT</strong><a href="#" className="text-blue-400">ER</a></span>
         </div>
         <div className="mt-4 md:mt-0 font-semibold text-white">
-          @ 2025 CONVERTER. All rights reserved
+          © 2025 CONVERTER. All rights reserved
         </div>
       </div>
     </footer>
