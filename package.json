@@ -1,24 +1,28 @@
 {
-  "name": "tinywow-clone",
-  "version": "1.0.0",
+  "name": "next-app",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_ENV=development next dev -H 0.0.0.0 -p 3000",
     "build": "next build",
-    "start": "next start"
+    "lint": "next lint"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.14",
-    "next": "14.0.4",
-    "postcss": "^8.4.21",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.10.1",
-    "tailwindcss": "^3.3.2"
+    "@react-google-maps/api": "^2.19.3",
+    "next": "15.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^3.0.2"
   },
   "devDependencies": {
-    "@types/node": "22.15.21",
-    "@types/react": "19.1.5",
-    "typescript": "5.8.3"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.5.5",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
   }
 }

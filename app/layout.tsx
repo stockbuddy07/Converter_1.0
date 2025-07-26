@@ -1,18 +1,25 @@
-// app/layout.js
-import '/styles/globals.css'
-import Footer from '../components/Footer'
 
-export const metadata = {
-  title: 'Converter_1.0',
-  description: 'Free online tools',
-}
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
-export default function RootLayout({ children }) {
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'TinyWow - Free Online Tools',
+  description: 'Free online tools for PDF, images, writing, video, and file conversion',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         {children}
       </body>
     </html>
-  )
+  );
 }
