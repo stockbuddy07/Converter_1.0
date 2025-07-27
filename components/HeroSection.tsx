@@ -69,7 +69,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="bg-gray-50 dark:bg-gray-800 py-8 transition-colors duration-300">
+      <section className="bg-gray-50 dark:bg-gray-800 py-0 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="relative">
             {/* Heading */}

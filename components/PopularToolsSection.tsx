@@ -44,10 +44,12 @@ export default function PopularToolsSection({ searchQuery = '' }: { searchQuery?
   }
 
   return (
-  <section className="pt-4 pb-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Tabs */}
-    <div className="flex flex-wrap justify-center gap-2 mb-4 bg-white dark:bg-gray-900 rounded-2xl p-2 shadow-sm">
+   <section className="pt-4 pb-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-4 bg-white dark:bg-gray-900 rounded-2xl p-2 shadow-sm">
 
           {tabs.map((tab) => (
             <button

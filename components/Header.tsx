@@ -1,201 +1,299 @@
+"use client";
 
-'use client';
-
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark";
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
     const initialTheme = savedTheme || systemTheme;
-    
     setTheme(initialTheme);
-    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
+  // ✅ All Mega Menu Items
   const dropdownMenus = {
     PDF: [
-      { name: 'PDF to Word', icon: 'ri-file-word-line', description: 'Convert PDF to editable Word document' },
-      { name: 'PDF to Excel', icon: 'ri-file-excel-line', description: 'Convert PDF to Excel spreadsheet' },
-      { name: 'PDF to PPT', icon: 'ri-file-ppt-line', description: 'Convert PDF to PowerPoint presentation' },
-      { name: 'Merge PDF', icon: 'ri-file-copy-line', description: 'Combine multiple PDFs into one' },
-      { name: 'Split PDF', icon: 'ri-scissors-line', description: 'Split PDF into separate files' },
-      { name: 'Compress PDF', icon: 'ri-archive-line', description: 'Reduce PDF file size' }
+      {
+        name: "Edit PDF",
+        icon: "ri-edit-box-line",
+        description: "Edit text & images in PDFs",
+      },
+      {
+        name: "Merge PDF",
+        icon: "ri-file-copy-line",
+        description: "Combine multiple PDFs",
+      },
+      {
+        name: "Split PDF",
+        icon: "ri-scissors-line",
+        description: "Split PDF into parts",
+      },
+      {
+        name: "Compress PDF",
+        icon: "ri-archive-line",
+        description: "Reduce file size",
+      },
+      {
+        name: "PDF to Word",
+        icon: "ri-file-word-line",
+        description: "Convert to Word",
+      },
+      {
+        name: "PDF to Excel",
+        icon: "ri-file-excel-line",
+        description: "Convert to Excel",
+      },
+      {
+        name: "PDF to PPT",
+        icon: "ri-file-ppt-line",
+        description: "Convert to PowerPoint",
+      },
+      {
+        name: "Rotate PDF",
+        icon: "ri-refresh-line",
+        description: "Rotate pages",
+      },
+      {
+        name: "Add Watermark",
+        icon: "ri-water-flash-line",
+        description: "Protect your files",
+      },
+      {
+        name: "Protect PDF",
+        icon: "ri-lock-line",
+        description: "Add password",
+      },
     ],
     Image: [
-      { name: 'Image Compressor', icon: 'ri-image-line', description: 'Reduce image file size' },
-      { name: 'Image Converter', icon: 'ri-image-edit-line', description: 'Convert between image formats' },
-      { name: 'Image Resizer', icon: 'ri-aspect-ratio-line', description: 'Resize images to any dimension' },
-      { name: 'Background Remover', icon: 'ri-crop-line', description: 'Remove image backgrounds' },
-      { name: 'Image Editor', icon: 'ri-edit-line', description: 'Edit and enhance images' },
-      { name: 'Photo Filters', icon: 'ri-contrast-line', description: 'Apply filters to photos' }
-    ],
-    Write: [
-      { name: 'AI Writer', icon: 'ri-quill-pen-line', description: 'Generate content with AI' },
-      { name: 'Grammar Checker', icon: 'ri-check-line', description: 'Check and fix grammar errors' },
-      { name: 'Paraphraser', icon: 'ri-repeat-line', description: 'Rewrite text in different ways' },
-      { name: 'Summarizer', icon: 'ri-file-text-line', description: 'Create summaries of long text' },
-      { name: 'Translation', icon: 'ri-translate-line', description: 'Translate text between languages' },
-      { name: 'Word Counter', icon: 'ri-calculator-line', description: 'Count words and characters' }
+      {
+        name: "Image Converter",
+        icon: "ri-image-edit-line",
+        description: "Convert image formats",
+      },
+      {
+        name: "Image Compressor",
+        icon: "ri-compress-line",
+        description: "Reduce file size",
+      },
+      {
+        name: "Resize Image",
+        icon: "ri-aspect-ratio-line",
+        description: "Resize dimensions",
+      },
+      {
+        name: "Remove Background",
+        icon: "ri-crop-line",
+        description: "AI remove backgrounds",
+      },
+      {
+        name: "Image to PDF",
+        icon: "ri-file-transfer-line",
+        description: "Convert to PDF",
+      },
+      {
+        name: "Image to Text",
+        icon: "ri-text-line",
+        description: "Extract text (OCR)",
+      },
+      {
+        name: "Image Enhancer",
+        icon: "ri-magic-line",
+        description: "Improve quality",
+      },
+      {
+        name: "Image Colorizer",
+        icon: "ri-palette-line",
+        description: "Colorize B&W photos",
+      },
     ],
     Video: [
-      { name: 'Video Converter', icon: 'ri-video-line', description: 'Convert video formats' },
-      { name: 'Video Compressor', icon: 'ri-video-download-line', description: 'Reduce video file size' },
-      { name: 'Video Editor', icon: 'ri-movie-line', description: 'Edit and trim videos' },
-      { name: 'Audio Extractor', icon: 'ri-music-line', description: 'Extract audio from videos' },
-      { name: 'Video Merger', icon: 'ri-file-copy-2-line', description: 'Combine multiple videos' },
-      { name: 'GIF Maker', icon: 'ri-image-2-line', description: 'Create GIFs from videos' }
+      {
+        name: "Video Converter",
+        icon: "ri-video-line",
+        description: "Convert video formats",
+      },
+      {
+        name: "Video Compressor",
+        icon: "ri-download-line",
+        description: "Reduce file size",
+      },
+      {
+        name: "Video Trimmer",
+        icon: "ri-scissors-line",
+        description: "Cut sections",
+      },
+      {
+        name: "Merge Videos",
+        icon: "ri-file-copy-2-line",
+        description: "Combine videos",
+      },
+      {
+        name: "Video to GIF",
+        icon: "ri-image-2-line",
+        description: "Convert to GIF",
+      },
+      {
+        name: "Extract Audio",
+        icon: "ri-music-line",
+        description: "Convert to MP3",
+      },
+      {
+        name: "Add Subtitles",
+        icon: "ri-translate-line",
+        description: "Upload or auto-generate",
+      },
+      {
+        name: "Change Speed",
+        icon: "ri-speed-line",
+        description: "Slow/Fast motion",
+      },
     ],
-    File: [
-      { name: 'File Converter', icon: 'ri-file-transfer-line', description: 'Convert between file formats' },
-      { name: 'File Compressor', icon: 'ri-folder-zip-line', description: 'Compress files and folders' },
-      { name: 'Password Generator', icon: 'ri-lock-line', description: 'Generate secure passwords' },
-      { name: 'QR Code Generator', icon: 'ri-qr-code-line', description: 'Create QR codes' },
-      { name: 'URL Shortener', icon: 'ri-link-line', description: 'Shorten long URLs' },
-      { name: 'Color Picker', icon: 'ri-palette-line', description: 'Pick colors from images' }
-    ]
+    Write: [
+      {
+        name: "AI Article Writer",
+        icon: "ri-quill-pen-line",
+        description: "Create long articles",
+      },
+      {
+        name: "AI Summarizer",
+        icon: "ri-file-text-line",
+        description: "Summarize text",
+      },
+      {
+        name: "AI Paraphraser",
+        icon: "ri-repeat-line",
+        description: "Rewrite text",
+      },
+      {
+        name: "Grammar Checker",
+        icon: "ri-check-line",
+        description: "Fix grammar",
+      },
+      {
+        name: "SEO Meta Generator",
+        icon: "ri-seo-line",
+        description: "Titles & Descriptions",
+      },
+      {
+        name: "Social Captions",
+        icon: "ri-instagram-line",
+        description: "Create captions",
+      },
+      {
+        name: "Plagiarism Checker",
+        icon: "ri-shield-check-line",
+        description: "Check originality",
+      },
+    ],
   };
 
-  const handleMouseEnter = (menu: string) => {
-    setActiveDropdown(menu);
-  };
+  const handleMouseEnter = (menu: string) => setActiveDropdown(menu);
+  const handleMouseLeave = () => setActiveDropdown(null);
 
-  const handleMouseLeave = () => {
-    setActiveDropdown(null);
-  };
-
-  if (!mounted) {
-    return (
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-2">
-              
-                <span className="text-xl font-bold text-gray-900">CONVERTER</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
-    );
-  }
+  if (!mounted) return null;
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white dark:bg-gray-900 shadow-sm">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">T</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900 dark:text-white">CONVERTER</span>
-            </Link>
-          </div>
+    <header className="fixed top-0 w-full bg-white dark:bg-gray-900 shadow z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-2 group">
+            {/* Trident Logo with Hover Animation */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 512 512"
+              className="w-8 h-8 text-blue-600 transition-transform duration-300 group-hover:scale-110 group-hover:animate-pulse"
+            >
+              <path d="M256 0c-20 70-60 90-60 90s20 10 40 40l-40 120h-50V130H90v120H40L80 400l-40 40h120l-40-40 40-150h50v150l-40 40h120l-40-40V250h50l40 150-40 40h120l-40-40 40-150h-50V130h-50v120h-50l-40-120c20-30 40-40 40-40s-40-20-60-90z" />
+            </svg>
 
-          <nav className="hidden md:flex items-center space-x-8">
+            {/* Brand Text */}
+            <span className="text-xl font-bold text-gray-900 dark:text-white">
+              CONVERTER
+            </span>
+          </Link>
+
+          {/* Navigation */}
+          <nav className="hidden md:flex space-x-6">
             {Object.keys(dropdownMenus).map((menu) => (
-              <div 
-                key={menu} 
-                className="relative"
-                onMouseEnter={() => handleMouseEnter(menu)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button 
-                  className="flex items-center space-x-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap cursor-pointer"
-                >
+              <div key={menu} className="relative group">
+                <button className="flex items-center space-x-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap cursor-pointer">
                   <span>{menu}</span>
-                  <i className={`ri-arrow-down-s-line w-4 h-4 flex items-center justify-center transition-transform ${activeDropdown === menu ? 'rotate-180' : ''}`}></i>
+                  <i
+                    className={`ri-arrow-down-s-line w-4 h-4 flex items-center justify-center transition-transform ${
+                      activeDropdown === menu ? "rotate-180" : ""
+                    }`}
+                  ></i>
                 </button>
-                
-                {activeDropdown === menu && (
-                  <div className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50">
-                    <div className="p-4">
-                      <div className="grid gap-2">
-                        {dropdownMenus[menu as keyof typeof dropdownMenus].map((item, index) => (
+
+                {/* Dropdown */}
+                <div className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="p-4">
+                    <div className="grid gap-2">
+                      {dropdownMenus[menu as keyof typeof dropdownMenus].map(
+                        (item, index) => (
                           <Link
                             key={index}
                             href="#"
                             className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
                           >
                             <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
-                              <i className={`${item.icon} w-4 h-4 flex items-center justify-center text-blue-600 dark:text-blue-400`}></i>
+                              <i
+                                className={`${item.icon} text-blue-600 dark:text-blue-400`}
+                              ></i>
                             </div>
                             <div className="flex-1">
-                              <div className="font-medium text-gray-900 dark:text-white text-sm">{item.name}</div>
-                              <div className="text-xs text-gray-500 dark:text-gray-400">{item.description}</div>
+                              <div className="font-medium text-gray-900 dark:text-white text-sm">
+                                {item.name}
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                {item.description}
+                              </div>
                             </div>
                           </Link>
-                        ))}
-                      </div>
+                        )
+                      )}
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </nav>
 
+          {/* Actions */}
           <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-2">
-              <button 
-                onClick={toggleTheme}
-                className="w-6 h-6 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
-              >
-                <i className={`${theme === 'light' ? 'ri-moon-line' : 'ri-sun-line'} w-5 h-5 flex items-center justify-center`}></i>
-              </button>
-              <button className="w-6 h-6 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer">
-                <i className="ri-share-line w-5 h-5 flex items-center justify-center"></i>
-              </button>
-            </div>
-
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search"
-                className="pl-8 pr-4 py-2 text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-4 h-4 flex items-center justify-center"></i>
-            </div>
-
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors whitespace-nowrap cursor-pointer">
-              Sign In
-            </button>
-
-            <button 
-              className="md:hidden w-6 h-6 flex items-center justify-center cursor-pointer text-gray-600 dark:text-gray-400"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            <button
+              onClick={toggleTheme}
+              className="text-gray-500 hover:text-blue-600"
             >
-              <i className="ri-menu-line w-5 h-5 flex items-center justify-center"></i>
+              <i
+                className={theme === "light" ? "ri-moon-line" : "ri-sun-line"}
+              ></i>
+            </button>
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+              Sign In
             </button>
           </div>
         </div>
-
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t dark:border-gray-700">
-            <div className="flex flex-col space-y-2">
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2">PDF</Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2">Image</Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2">Write</Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2">Video</Link>
-              <Link href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2">File</Link>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

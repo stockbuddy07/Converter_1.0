@@ -13,7 +13,7 @@ export default function ToolsSection() {
       color: 'bg-purple-500',
       toolCount: '45+ tools',
       featuredTool: 'PDF Creator',
-      link: '/tools/pdf-creator'
+      link: `/tools/pdf`
     },
     {
       id: 'image',
@@ -23,7 +23,7 @@ export default function ToolsSection() {
       color: 'bg-orange-500',
       toolCount: '30+ tools',
       featuredTool: 'Remove BG',
-      link: '/tools/remove-background'
+      link: '/tools/image'
     },
     {
       id: 'video',
@@ -33,7 +33,7 @@ export default function ToolsSection() {
       color: 'bg-pink-500',
       toolCount: '15+ tools',
       featuredTool: 'Mute Video',
-      link: '/tools/mute-video'
+      link: '/tools/video'
     },
     {
       id: 'write',
@@ -43,7 +43,7 @@ export default function ToolsSection() {
       color: 'bg-blue-500',
       toolCount: '10+ tools',
       featuredTool: 'Paragraph Writer',
-      link: '/tools/paragraph-writer'
+      link: '/tools/ai'
     },
     {
       id: 'file',
@@ -53,7 +53,7 @@ export default function ToolsSection() {
       color: 'bg-teal-500',
       toolCount: '15+ tools',
       featuredTool: 'Split Excel',
-      link: '/tools/split-excel'
+      link: '/tools/file'
     }
   ];
 

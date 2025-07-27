@@ -1,5 +1,4 @@
 {
   "/page": "app/page.js",
-  "/tools/pdf-creator/page": "app/tools/pdf-creator/page.js",
-  "/tools/remove-background/page": "app/tools/remove-background/page.js"
+  "/tools/pdf/page": "app/tools/pdf/page.js"
 }
