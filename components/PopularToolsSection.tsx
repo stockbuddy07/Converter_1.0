@@ -1,10 +1,9 @@
-
 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
 
-export default function PopularToolsSection() {
+export default function PopularToolsSection({ searchQuery = '' }: { searchQuery?: string }) {
   const [activeTab, setActiveTab] = useState('All Tools');
 
   const tabs = [
@@ -18,107 +17,38 @@ export default function PopularToolsSection() {
   ];
 
   const tools = [
-    {
-      title: 'Essay Writer',
-      description: 'Easily create an essay with AI',
-      icon: 'ri-file-text-line',
-      category: 'AI Write',
-      color: 'bg-green-100 text-green-600'
-    },
-    {
-      title: 'Content Improver',
-      description: 'Improve your content',
-      icon: 'ri-file-edit-line',
-      category: 'AI Write',
-      color: 'bg-blue-100 text-blue-600'
-    },
-    {
-      title: 'Paragraph Writer',
-      description: 'Paragraph Writer',
-      icon: 'ri-file-text-line',
-      category: 'AI Write',
-      color: 'bg-orange-100 text-orange-600',
-      link: '/tools/paragraph-writer'
-    },
-    {
-      title: 'AI Image Generator',
-      description: 'AI Image Generator',
-      icon: 'ri-image-line',
-      category: 'Image Tools',
-      color: 'bg-cyan-100 text-cyan-600'
-    },
-    {
-      title: 'Remove Background',
-      description: 'Easily Remove the Background from an Image',
-      icon: 'ri-image-line',
-      category: 'Image Tools',
-      color: 'bg-cyan-100 text-cyan-600',
-      link: '/tools/remove-background'
-    },
-    {
-      title: 'Merge PDF',
-      description: 'Merge 2 or more PDF files into a single PDF file',
-      icon: 'ri-file-pdf-line',
-      category: 'PDF Tools',
-      color: 'bg-purple-100 text-purple-600'
-    },
-    {
-      title: 'Edit PDF',
-      description: 'Free PDF Editor',
-      icon: 'ri-edit-line',
-      category: 'PDF Tools',
-      color: 'bg-orange-100 text-orange-600'
-    },
-    {
-      title: 'PDF to JPG',
-      description: 'Convert PDF to JPG and download each page as an image',
-      icon: 'ri-file-pdf-line',
-      category: 'PDF Tools',
-      color: 'bg-yellow-100 text-yellow-600'
-    },
-    {
-      title: 'JPG to PDF',
-      description: 'Upload images and receive as a PDF',
-      icon: 'ri-file-pdf-line',
-      category: 'PDF Tools',
-      color: 'bg-blue-100 text-blue-600'
-    },
-    {
-      title: 'Upscale Image',
-      description: 'Increase the resolution of your image',
-      icon: 'ri-image-line',
-      category: 'Image Tools',
-      color: 'bg-yellow-100 text-yellow-600'
-    },
-    {
-      title: 'Compress PDF',
-      description: 'Lessen the file size of a PDF file',
-      icon: 'ri-file-pdf-line',
-      category: 'PDF Tools',
-      color: 'bg-orange-100 text-orange-600'
-    },
-    {
-      title: 'Paragraph Completer',
-      description: 'Paragraph Completer',
-      icon: 'ri-file-text-line',
-      category: 'AI Write',
-      color: 'bg-blue-100 text-blue-600'
-    }
+    { title: 'Essay Writer', description: 'Easily create an essay with AI', icon: 'ri-file-text-line', category: 'AI Write', color: 'bg-green-100 text-green-600' },
+    { title: 'Content Improver', description: 'Improve your content', icon: 'ri-file-edit-line', category: 'AI Write', color: 'bg-blue-100 text-blue-600' },
+    { title: 'Paragraph Writer', description: 'Paragraph Writer', icon: 'ri-file-text-line', category: 'AI Write', color: 'bg-orange-100 text-orange-600', link: '/tools/paragraph-writer' },
+    { title: 'AI Image Generator', description: 'AI Image Generator', icon: 'ri-image-line', category: 'Image Tools', color: 'bg-cyan-100 text-cyan-600' },
+    { title: 'Remove Background', description: 'Easily Remove the Background from an Image', icon: 'ri-image-line', category: 'Image Tools', color: 'bg-cyan-100 text-cyan-600', link: '/tools/remove-background' },
+    { title: 'Merge PDF', description: 'Merge 2 or more PDF files into a single PDF file', icon: 'ri-file-pdf-line', category: 'PDF Tools', color: 'bg-purple-100 text-purple-600' },
+    { title: 'Edit PDF', description: 'Free PDF Editor', icon: 'ri-edit-line', category: 'PDF Tools', color: 'bg-orange-100 text-orange-600' },
+    { title: 'PDF to JPG', description: 'Convert PDF to JPG and download each page as an image', icon: 'ri-file-pdf-line', category: 'PDF Tools', color: 'bg-yellow-100 text-yellow-600' },
+    { title: 'JPG to PDF', description: 'Upload images and receive as a PDF', icon: 'ri-file-pdf-line', category: 'PDF Tools', color: 'bg-blue-100 text-blue-600' },
+    { title: 'Upscale Image', description: 'Increase the resolution of your image', icon: 'ri-image-line', category: 'Image Tools', color: 'bg-yellow-100 text-yellow-600' },
+    { title: 'Compress PDF', description: 'Lessen the file size of a PDF file', icon: 'ri-file-pdf-line', category: 'PDF Tools', color: 'bg-orange-100 text-orange-600' },
+    { title: 'Paragraph Completer', description: 'Paragraph Completer', icon: 'ri-file-text-line', category: 'AI Write', color: 'bg-blue-100 text-blue-600' }
   ];
 
-  const filteredTools = activeTab === 'All Tools' 
-    ? tools 
+  // Filter by tab
+  let filteredTools = activeTab === 'All Tools'
+    ? tools
     : tools.filter(tool => tool.category === activeTab);
 
-  return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Most Popular Tools</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">We present the best of the best. All free, no catch</p>
-        </div>
+  // Apply search filter
+  if (searchQuery.trim() !== '') {
+    filteredTools = filteredTools.filter(tool =>
+      tool.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
 
-        <div className="flex flex-wrap justify-center gap-2 mb-12 bg-white dark:bg-gray-900 rounded-2xl p-2 shadow-sm">
+  return (
+  <section className="pt-4 pb-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Tabs */}
+    <div className="flex flex-wrap justify-center gap-2 mb-4 bg-white dark:bg-gray-900 rounded-2xl p-2 shadow-sm">
+
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -135,47 +65,46 @@ export default function PopularToolsSection() {
           ))}
         </div>
 
+        {/* Tools Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredTools.map((tool, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group border border-gray-200 dark:border-gray-700"
-            >
-              {tool.link ? (
-                <Link href={tool.link} className="block">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.color}`}>
-                      <i className={`${tool.icon} w-6 h-6 flex items-center justify-center`}></i>
+          {filteredTools.length > 0 ? (
+            filteredTools.map((tool, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group border border-gray-200 dark:border-gray-700"
+              >
+                {tool.link ? (
+                  <Link href={tool.link} className="block">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.color}`}>
+                        <i className={`${tool.icon} w-6 h-6 flex items-center justify-center`}></i>
+                      </div>
+                      <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full">
+                        {tool.category}
+                      </span>
                     </div>
-                    <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full">
-                      {tool.category}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{tool.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{tool.description}</p>
-                </Link>
-              ) : (
-                <>
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.color}`}>
-                      <i className={`${tool.icon} w-6 h-6 flex items-center justify-center`}></i>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{tool.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{tool.description}</p>
+                  </Link>
+                ) : (
+                  <>
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.color}`}>
+                        <i className={`${tool.icon} w-6 h-6 flex items-center justify-center`}></i>
+                      </div>
+                      <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full">
+                        {tool.category}
+                      </span>
                     </div>
-                    <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full">
-                      {tool.category}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{tool.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{tool.description}</p>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <button className="px-8 py-3 bg-white dark:bg-gray-900 text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 rounded-xl font-medium hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
-            All Tools
-          </button>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{tool.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{tool.description}</p>
+                  </>
+                )}
+              </div>
+            ))
+          ) : (
+            <p className="text-gray-500 dark:text-gray-400 col-span-full text-center">No tools found.</p>
+          )}
         </div>
       </div>
     </section>
