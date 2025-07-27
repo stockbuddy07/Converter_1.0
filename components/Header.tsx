@@ -85,10 +85,8 @@ export default function Header() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">T</span>
-                </div>
-                <span className="text-xl font-bold text-gray-900">TinyWow</span>
+              
+                <span className="text-xl font-bold text-gray-900">CONVERTER</span>
               </Link>
             </div>
           </div>
@@ -106,7 +104,7 @@ export default function Header() {
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">T</span>
               </div>
-              <span className="text-xl font-bold text-gray-900 dark:text-white">TinyWow</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">CONVERTER</span>
             </Link>
           </div>
 

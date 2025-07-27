@@ -1,0 +1,4 @@
+{
+  "/page": "app/page.js",
+  "/tools/pdf-creator/page": "app/tools/pdf-creator/page.js"
+}

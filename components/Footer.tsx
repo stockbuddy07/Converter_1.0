@@ -41,9 +41,9 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">T</span>
+             
               </div>
-              <span className="text-xl font-bold">TinyWow</span>
+              <span className="text-xl font-bold">CONVERTER</span>
             </Link>
             <p className="text-gray-400 dark:text-gray-500 text-sm mb-4">
               Free online tools to make your life easier. Convert, compress, and create with ease.
@@ -86,7 +86,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 dark:border-gray-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 dark:text-gray-500 text-sm">
-              © 2024 TinyWow. All rights reserved.
+              © 2025 CONVERTER. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="#" className="text-gray-400 dark:text-gray-500 hover:text-white transition-colors text-sm">

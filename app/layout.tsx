@@ -6,7 +6,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'TinyWow - Free Online Tools',
+  title: 'CONVERTER - Free Online Tools',
   description: 'Free online tools for PDF, images, writing, video, and file conversion',
 };
 
