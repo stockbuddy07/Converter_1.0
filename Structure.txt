@@ -1,0 +1,24 @@
+[Root] /app/tools/
+├── [PDF Tools]
+│   ├── PDF to Word      → /tools/pdf_to_word/page
+│   ├── Merge PDF        → /tools/merge-pdf
+│   ├── Split PDF        → /tools/split-pdf
+│   ├── Compress PDF     → /tools/compress-pdf
+│   └── PDF Creator      → /tools/pdf-creator
+│
+├── [Image Tools]
+│   ├── Remove Background → /tools/remove-background
+│   ├── Image Compressor → /tools/image-compressor
+│   └── Convert to PNG   → /tools/convert-to-png
+│
+├── [Video Tools]
+│   ├── Mute Video       → /tools/mute-video
+│   └── Video Converter  → /tools/video-converter
+│
+├── [AI Write Tools]
+│   ├── Paragraph Writer → /tools/paragraph-writer
+│   └── AI Blog Writer   → /tools/ai-blog-writer
+│
+└── [File Tools]
+    ├── Split Excel      → /tools/split-excel
+    └── Merge CSV        → /tools/merge-csv
